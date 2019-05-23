@@ -9,6 +9,7 @@ typedef struct{
 
 int main(){
   elem *elem1 = malloc(1*sizeof(int));
+  int *ponteiro_inicio = elem1;
   (*elem1).chave = 12;
   (*elem1).ponteiro_prox = malloc(1*sizeof(int));
   elem *elem2 = (*elem1).ponteiro_prox;
