@@ -1,6 +1,24 @@
 #include <stdio.h>
 #include <malloc.h>
 
+
+typedef int TipoChave;
+
+typedef struct {
+    int Chave;
+}TipoItem;
+
+typedef struct Celula_str *Apontador;
+
+typedef struct Celula_str {
+    TipoItem Item;
+    Apontador Prox;
+}Celula;
+
+typedef struct {
+    Apontador Primeiro, Ultimo;
+}TipoLista
+
 typedef struct{
   int  *ponteiro_prox;
   int chave;
