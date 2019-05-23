@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct{
+  int  *ponteiro_prox;
+  int chave;
+}elem;
+
+
+int main(){
+  elem *elem1 = malloc(1*sizeof(int));
+  (*elem1).chave = 12;
+  (*elem1).ponteiro_prox = malloc(1*sizeof(int));
+  elem *elem2 = (*elem1).ponteiro_prox;
+  (*elem2).chave = 13;
+  (*elem2).ponteiro_prox = malloc(1*sizeof(int));
+  elem *elem3 = (*elem2).ponteiro_prox;
+  (*elem3).chave = 14;
+  (*elem3).ponteiro_prox = malloc(1*sizeof(int));
+  elem *elem4 = (*elem3).ponteiro_prox;
+  (*elem4).chave = 15;
+  (*elem4).ponteiro_prox = NULL;
+
+  return 0;
+}
