@@ -16,7 +16,7 @@ typedef struct Celula_str {
 }Celula;
 
 typedef struct {
-    Apontador Primeiro, Ultimo;
+    Apontador Primeiro;
 }TipoLista
 
 typedef struct{
@@ -24,9 +24,18 @@ typedef struct{
   int chave;
 }elem;
 
+Void inicializarlista(TipoLista * l){
+l->Primeiro = malloc(sizeof(Celula));
+l->Primeiro->Prox = NULL;
+
+}
 
 int main(){
 
+TipoLista lista1;
+   
+  inicializarlista(&lista1);
+  
   elem *elem1 = malloc(1*sizeof(elem));
   int *ponteiro_inicio = elem1;
   (*elem1).chave = 12;
