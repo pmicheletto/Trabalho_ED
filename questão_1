@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <malloc.h>
+
+
+typedef int TipoChave;
+
+typedef struct {
+    int Chave;
+}TipoItem;
+
+typedef struct Celula_str *Apontador;
+
+typedef struct Celula_str {
+    TipoItem Item;
+    Apontador Prox;
+}Celula;
+
+typedef struct {
+    Apontador Primeiro, Ultimo;
+}TipoLista
+
+void Inicializar_Lista(TipoLista *l){
+    l->Primeiro = NULL;
+}
+
+void Inserir_Ordenado (TipoLista *lista, TipoChave inserido){
+    Apontador p1 = lista->Primeiro;
+    Apontador p2;
+    if(lista->Primeiro == NULL){
+        lista->Primeiro = (Apontador) malloc(sizeof(Celula));
+        lista->Primeiro->Item = inserido;
+        lista->Primeiro->Prox = NULL;
+    }
+    while(p1->Item < inserido){
+        p1 = p1->Prox;
+    }
+    if(p1->Item == inserido){
+        printf("Esta chave já se encontra na lista");
+        return;
+    }
+    p2 = p1->Prox;
+    p1->Prox = (Apontador) malloc(sizeof(Celula));
+    p1->Prox->Prox = p2;
+    return
+}
+
+typedef struct aux {
+  struct aux *ponteiro_prox;
+  int chave;
+}elem; /*Definindo a estrutura de um elemento da lista*/
+int cont = 0;
+
+int contador(elem *elem1){ /*Conta o número de elementos na lista*/
+  if(elem1 == NULL){
+    return 0;
+  }
+  if((*elem1).ponteiro_prox == NULL){
+    cont++;
+    return cont;
+  }
+
+  cont++;
+  contador((*elem1).ponteiro_prox);
+  return cont;
+}
+
+void mostrar_elementos(elem *elem1){
+  printf("%d\n", (*elem1).chave);
+  if((*elem1).ponteiro_prox != NULL){
+    mostrar_elementos((*elem1).ponteiro_prox);
+  }
+}
+
+elem *eliminar_elemento(elem *elem1, int chave_eliminada){ /*Recebe como segundo argumento a chave a ser eliminada*/
+  elem *aux;
+
+  if((*elem1).chave == chave_eliminada){ /**/
+    aux = (*elem1).ponteiro_prox;
+    free(elem1);
+    return aux;
+  }
+  else if((*elem1).chave != chave_eliminada && (*elem1).ponteiro_prox != NULL){
+    (*elem1).ponteiro_prox = eliminar_elemento((*elem1).ponteiro_prox, chave_eliminada);
+  }
+  else if((*elem1).chave != chave_eliminada && (*elem1).ponteiro_prox == NULL){
+    printf("Este elemento nao esta na lista.\n");
+  }
+  return elem1;
+}
+
+int main(){
+
+  elem *elem1 = malloc(1*sizeof(elem)); /* Alocando memória para o primeiro elemento da lista*/
+  elem *ponteiro_inicio = elem1; /*Guardando no ponteiro para início o endereço do primeiro elemento da lista*/
+  (*elem1).chave = 12; /*Atribuindo valor da chave do primeiro elemento*/
+  (*elem1).ponteiro_prox = malloc(1*sizeof(elem)); /*Alocando memória para o próximo elemento*/
+  elem *elem2 = (*elem1).ponteiro_prox;
+  (*elem2).chave = 13;
+  (*elem2).ponteiro_prox = malloc(1*sizeof(elem));
+  elem *elem3 = (*elem2).ponteiro_prox;
+  (*elem3).chave = 14;
+  (*elem3).ponteiro_prox = malloc(1*sizeof(elem));
+  elem *elem4 = (*elem3).ponteiro_prox;
+  (*elem4).chave = 15;
+  (*elem4).ponteiro_prox = NULL;/*Não há mais elementos*/
+
+  ponteiro_inicio = eliminar_elemento(ponteiro_inicio, 12); /*A função vai retornar o endereço do elemento de início*/
+  mostrar_elementos(ponteiro_inicio);
+  printf("%d\n", contador(ponteiro_inicio));
+
+  return 0;
+}
