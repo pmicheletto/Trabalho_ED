@@ -10,6 +10,16 @@ void inserir_elementos(estrutura_pilha *pilha, int chave){
 
 }
 
+void imprimir(pilha) 
+{
+int i;
+printf (“Elementos:\n”)
+	for (i=pilha.topo; i>=0; i--)
+	{
+	printf (“%i\n”, estrutura_pilha.chave); 
+	}
+}
+
 int main(){
   estrutura_pilha pilha;
   pilha.elem[0] = 1;
