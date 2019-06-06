@@ -5,7 +5,7 @@ const int size = 10;
     int chave;
     int topo;
     int elem[size] = (1, 2, 3, 4, 5);
-  }pilha;
+  }estrutura_pilha;
 
 
 int main(){
