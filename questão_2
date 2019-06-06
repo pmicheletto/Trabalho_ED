@@ -17,7 +17,7 @@ int main(){
   pilha.elem[2] = 3;
   pilha.elem[3] = 4;
   pilha.elem[4] = 5;
-  pilha.topo = 0;
-  pilha.chave = 1;
+  pilha.topo = 4;
+  pilha.chave = 5;
   return 0;
 }
