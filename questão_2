@@ -1,16 +1,23 @@
 #include <stdio.h>
 const int size = 10;
-
   typedef struct{
     int chave;
     int topo;
-    int elem[size] = (1, 2, 3, 4, 5);
+    int elem[size];
   }estrutura_pilha;
 
+void inserir_elementos(estrutura_pilha *pilha, int chave){
+
+}
 
 int main(){
-  
-  
-
+  estrutura_pilha pilha;
+  pilha.elem[0] = 1;
+  pilha.elem[1] = 2;
+  pilha.elem[2] = 3;
+  pilha.elem[3] = 4;
+  pilha.elem[4] = 5;
+  pilha.topo = 0;
+  pilha.chave = 1;
   return 0;
 }
