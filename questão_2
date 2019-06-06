@@ -1,9 +1,9 @@
 #include <stdio.h>
-const int size = 10;
+
   typedef struct{
     int chave;
     int topo;
-    int elem[size];
+    int elem[10];
   }estrutura_pilha;
 
 void inserir_elementos(estrutura_pilha *pilha, int chave){
