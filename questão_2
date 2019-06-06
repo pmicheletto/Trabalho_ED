@@ -1,1 +1,16 @@
+#include <stdio.h>
+const int size = 10;
 
+  typedef struct{
+    int chave;
+    int topo;
+    int elem[size] = (1, 2, 3, 4, 5);
+  }pilha;
+
+
+int main(){
+  
+  
+
+  return 0;
+}
